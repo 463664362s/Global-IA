@@ -1,0 +1,83 @@
+#include <Adafruit_LiquidCrystal.h>
+
+
+Adafruit_LiquidCrystal lcd(0);
+
+int vagasLivres,vagasOcupadas;
+long duration,duration2;
+int distanceCm, distanceCm2;
+int led;
+
+void setup() {
+  
+  Serial.begin(9600);
+  lcd.begin(16, 2);
+  pinMode(11, OUTPUT);
+  pinMode(10, INPUT);
+  pinMode(5, OUTPUT);
+  pinMode(4, INPUT);
+
+  for(int led = 6; led <= 9; led++){
+    pinMode(led, OUTPUT);
+  } 
+}
+
+void loop() {
+  
+  digitalWrite(11, LOW);
+  digitalWrite(11, HIGH);
+  digitalWrite(11, LOW);
+  duration = pulseIn(10, HIGH);
+  distanceCm = duration * 0.034 / 2;
+  
+  digitalWrite(5, LOW);
+  digitalWrite(5, HIGH);
+  digitalWrite(5, LOW);
+  duration2 = pulseIn(4, HIGH);
+  distanceCm2 = duration2 * 0.034 / 2;
+  
+  lcd.setCursor(0, 0);
+  lcd.print("vagas livres "); 
+  lcd.print(vagasLivres); 
+  lcd.setCursor(0, 1);
+  lcd.print("vagas ocupadas ");
+  lcd.print(vagasOcupadas);
+  
+  if(distanceCm > 200) { 
+    digitalWrite(9, LOW);
+    digitalWrite(8, HIGH);   
+  } else {
+  	digitalWrite(8, LOW);
+    digitalWrite(9, HIGH);
+  }
+  
+  if(distanceCm2 > 200) { 
+    digitalWrite(7, LOW);
+    digitalWrite(6, HIGH);   
+  } else {  
+  	digitalWrite(6, LOW);
+    digitalWrite(7, HIGH);
+  }
+  
+  if(distanceCm > 200 && distanceCm2 > 200) {
+  	 vagasOcupadas = 0;
+     vagasLivres = 2;
+  }
+  
+  if(distanceCm2 <= 200 &&  distanceCm2 <= 200) {
+     vagasLivres = 0;
+     vagasOcupadas = 2;
+  }
+  
+  if(distanceCm > 200 && distanceCm2 <= 200) {
+  	 vagasOcupadas = 1;
+     vagasLivres = 1;
+
+  }
+  
+  if(distanceCm <= 200 && distanceCm2 > 200) {
+  	 vagasOcupadas = 1;
+     vagasLivres = 1;
+  }
+  
+}
