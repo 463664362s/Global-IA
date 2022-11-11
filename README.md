@@ -35,7 +35,7 @@ Um flow recebe as informações dos sensores e envia para o segundo flow que ir�
 
 ## Diagrama do projeto
 
-Imagem para o desenvolvimento da atividade.
+Imagemns projeto finalizado
 
 <img src="/Simulação.png" width="550">
 <img src="/node-red-img.png" width="550">
