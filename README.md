@@ -35,6 +35,8 @@ Um flow recebe as informações dos sensores e envia para o segundo flow que ir�
 
 ## Diagrama do projeto
 
+Link video de apresentação: https://youtu.be/-HdeOM0LHw4
+
 Imagemns projeto finalizado
 
 <img src="/Simulação.png" width="550">
