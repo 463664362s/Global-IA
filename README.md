@@ -37,4 +37,6 @@ Um flow recebe as informações dos sensores e envia para o segundo flow que ir�
 
 Imagem para o desenvolvimento da atividade.
 
-<img src="/imagemProjeto.png" width="550">
+<img src="/Simulação.png" width="550">
+<img src="/node-red-img.png" width="550">
+
